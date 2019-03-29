@@ -24,6 +24,8 @@ export class Counter extends React.Component {
                 counter: props.seed
             }
         }
+        console.log("get Derived State From Props - props = " + props.seed + " - state = " + state.seed);
+        console.log("-------------------");
         return null
     }
 
@@ -46,12 +48,6 @@ export class Counter extends React.Component {
     //     console.log("-------------------");
     // }
 
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log("get Derived State From Props - nextProps = " + nextProps.seed + " - prevState = " + prevState.seed);
-        console.log("-------------------");
-        return null;
-    }
-
     shouldComponentUpdate = (nextProps, nextState) => {
         if(nextProps.ignoreProp && this.props.ignoreProp !== nextProps.ignoreProp){
             console.log("Should Component Update - DO NOT RENDER");
@@ -72,12 +68,12 @@ export class Counter extends React.Component {
     }
 
     componentDidUpdate(){
-        console.log("Component Did Update");
+        console.log("Component Did Update 1");
         console.log("-------------------");
     }
     
     render() {
-        console.log("Render");
+        console.log("Render Component");
 
         if(this.state.initializing){
             return <div>initializing...</div>
@@ -103,7 +99,7 @@ export class Counter extends React.Component {
     // }
 
     componentDidUpdate(prevProps, prevState, snapshot){
-        console.log("Component Did Update");
+        console.log("Component Did Update 2");
         console.log("Component Did Update - prevProps = " + prevProps.seed + " - this.props = " + this.props.seed + " - prevState = " + prevState.seed + " - snapshot = " + snapshot);
         console.log("-------------------");
     }
@@ -116,6 +112,7 @@ export class Counter extends React.Component {
     componentDidCatch(error, info){
         console.log("Component Did Catch");
         console.log("Component Did Catch - " + error);
+        console.log(info);
         console.log("-------------------");
         this.setState({error, info});
     }

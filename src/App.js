@@ -4,6 +4,7 @@ import './style.css';
 
 class App extends React.Component {
    constructor(props){
+      console.log("Constructor");
       super(props);
 
       this.state = {
@@ -22,6 +23,8 @@ class App extends React.Component {
    }
 
    render() {
+      console.log("Render");
+
       return <div>
             <button onClick={this.mountCounter} disabled={this.state.mount}>Mount Counter</button>
             <button onClick={this.unmountCounter} disabled={!this.state.mount}>Unmount Counter</button>
