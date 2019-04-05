@@ -17,18 +17,6 @@ export class Counter extends React.Component {
         this.decrement = () => this.setState({counter: this.state.counter - 1});
     }
 
-    static getDerivedStateFromProps(props, state){
-        if(props.seed && state.seed !== props.seed){
-            return{
-                seed: props.seed,
-                counter: props.seed
-            }
-        }
-        console.log("get Derived State From Props - props = " + props.seed + " - state = " + state.seed);
-        console.log("-------------------");
-        return null
-    }
-
     // componentWillMount(){
     //     console.log("Component Will Mount");
     //     console.log("-------------------");
@@ -40,6 +28,18 @@ export class Counter extends React.Component {
             this.setState({initializing: false})    
         }, 500);
         console.log("-------------------");
+    }
+
+    static getDerivedStateFromProps(props, state){
+        if(props.seed && state.seed !== props.seed){
+            return{
+                seed: props.seed,
+                counter: props.seed
+            }
+        }
+        console.log("get Derived State From Props - props = " + props.seed + " - state = " + state.seed);
+        console.log("-------------------");
+        return null
     }
 
     // componentWillReceiveProps(nextProps){
